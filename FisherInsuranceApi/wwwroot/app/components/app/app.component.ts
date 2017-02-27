@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 @Component({
  selector: "fisher-insurance",
- template: `<home-page>`,
+ templateURL: `.app/components/app.component.html`,
 })
 export class AppComponent { } 
