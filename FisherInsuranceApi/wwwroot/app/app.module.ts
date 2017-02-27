@@ -20,8 +20,6 @@ import { NavBarComponent } from './components/navbar/navbar.component';
     ],
     bootstrap: [
         AppComponent
-       // HomeComponent,
-        //NavBarComponent
     ],
 })
 export class AppModule { } 
