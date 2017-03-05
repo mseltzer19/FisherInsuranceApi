@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 
 using FisherInsuranceApi.Models;
 
@@ -17,4 +17,4 @@ namespace FisherInsuranceApi.Data
         Claim UpdateClaim(Claim claim);
         void DeleteClaim(int id);
     }
-}
+}*/

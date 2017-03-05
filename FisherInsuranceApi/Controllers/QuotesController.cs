@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/quotes")] 
     public class QuotesController : Controller 
     { 
-        private IMemoryStore db;
-        public QuotesController(IMemoryStore repo)
+        //private IMemoryStore db;
+        /*public QuotesController(IMemoryStore repo)
         {
             db = repo;
-        } 
+        } */
 
         // POST api/auto/quotes 
-        [HttpPost] 
+        /*[HttpPost] 
         public IActionResult Post([FromBody] Quote quote) 
         { 
             return Ok(db.CreateQuote(quote)); 
@@ -44,5 +44,5 @@ using Microsoft.AspNetCore.Mvc;
         public IActionResult GetQuotes()
         {
             return Ok(db.RetrieveAllQuotes);
-        } 
+        } */
     }
