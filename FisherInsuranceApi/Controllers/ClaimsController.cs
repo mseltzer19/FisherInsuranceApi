@@ -57,16 +57,17 @@ public class ClaimsController : Controller
         return Ok(db.UpdateClaim(claim));  
     } */
     [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody] Claim claim)
-    {
-        var newClaim = db.Claims.Find(id);
-        if (newClaim == null)
-        {
-            return NotFound();
-        }
-        newClaim = claim;
-        db.SaveChanges();
-        return Ok(newClaim);
+     [HttpPut("{id}")] 
+        public IActionResult Put(int id, [FromBody] Claim claim) 
+        { 
+            var newClaim = db.Claims.Find(id); 
+            if (newClaim == null) 
+            { 
+                return NotFound(); 
+            } 
+            newClaim = claim; 
+            db.SaveChanges(); 
+            return Ok(newClaim); 
     }
     /*
 
