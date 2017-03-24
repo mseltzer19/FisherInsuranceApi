@@ -2,15 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FisherInsuranceApi.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace FisherInsuranceApi
+namespace ReverseAuctionAPI
 {
     public class Startup
     {
@@ -18,7 +16,7 @@ namespace FisherInsuranceApi
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -30,26 +28,15 @@ namespace FisherInsuranceApi
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            //services.AddSingleton<IMemoryStore, MemoryStore>(); 
-            
             services.AddMvc();
-            services.AddIdentity<Applicationuser, IdentityRole>(config=>
-            {
-                config.User.RequireUniqueEmail = true;
-                config.Password.RequireNonAlphanumeric = false;
-            })
-            .AddEntityFrameworkStores<FisherContext>()
-            .AddDefaultTokenProviders();
-            services.AddDbContext<FisherContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            //loggerFactory.AddDebug();
-            app.UseDefaultFiles();
-            app.UseStaticFiles(); 
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
+
             app.UseMvc();
         }
     }

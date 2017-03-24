@@ -1,4 +1,4 @@
-{
+/*{
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.1.0",
@@ -48,9 +48,9 @@
 
   "publishOptions": {
     "include": [
-      "wwwroot",
-      "**/*.cshtml",
-      "appsettings.json",
+      "wwwroot",*/
+     // "**/*.cshtml",
+      /*"appsettings.json",
       "web.config"
     ]
   },
@@ -62,4 +62,4 @@
   "tooling": {
     "defaultNamespace": "FisherInsuranceApi"
   }
-}
+}*/
