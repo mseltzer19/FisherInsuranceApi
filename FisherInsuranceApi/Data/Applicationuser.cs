@@ -4,5 +4,6 @@ namespace FisherInsuranceApi.Data
 {
     public class Applicationuser : IdentityUser
     {
+        //empty
     }
 }
