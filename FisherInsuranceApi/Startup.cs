@@ -16,6 +16,8 @@ using Microsoft.Extensions.Logging;
 
 using Microsoft.IdentityModel.Tokens;
 
+using System;
+
 
 
 namespace FisherInsuranceApi
@@ -81,8 +83,10 @@ namespace FisherInsuranceApi
 
 
             services.AddDbContext<FisherContext>();
+            services.AddSingleton<DbSeeder>();
 
-            
+
+
 
         }
 
@@ -90,7 +94,7 @@ namespace FisherInsuranceApi
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, DbSeeder dbSeeder)
 
         {
 
@@ -155,7 +159,14 @@ namespace FisherInsuranceApi
 
 
             app.UseMvc();
-
+            try
+            {
+                dbSeeder.SeedAsync().Wait();
+            }
+            catch (AggregateException e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
 
     }
